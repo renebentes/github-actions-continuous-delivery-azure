@@ -4,6 +4,13 @@ on:
   pull_request:
     types: [labeled]
 
+env:
+  DOCKER_IMAGE_NAME: renebentes-azure-ttt
+  IMAGE_REGISTRY_URL: docker.pkg.github.com
+  AZURE_WEBAPP_NAME: renebentes-ttt-app
+
 jobs:
   build:
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
+    
     runs-on: ubuntu-latest
